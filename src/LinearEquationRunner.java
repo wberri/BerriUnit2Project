@@ -1,9 +1,7 @@
 import java.util.Scanner;
-import java.text.DecimalFormat;
 public class LinearEquationRunner {
     public static void main (String[] arg){
         Scanner scan = new Scanner(System.in);
-        //DecimalFormat decimalFormat = new DecimalFormat("0.00");
         System.out.println("Welcome!");
         System.out.print("Enter coordinate 1: ");
         String coord1 = scan.nextLine();
@@ -28,9 +26,22 @@ public class LinearEquationRunner {
         int numCoord2x = Integer.parseInt(coord2x);
         int numCoord2y = Integer.parseInt(coord2y);
 
-        //LinearEquation linEquation = new LinearEquation(numCoord1x, numCoord1y, numCoord2x, numCoord2y);
+        if (numCoord1x == numCoord2x){
+            System.out.println("These points are on a vertical line: x = " + numCoord1x);
+        } else{
+            LinearEquation linEquation = new LinearEquation(numCoord1x, numCoord1y, numCoord2x, numCoord2y);
 
-        System.out.println(numCoord1x+ numCoord1y+ numCoord2x+ numCoord2y);
+            System.out.println(linEquation.lineInfo());
+
+            System.out.print("Enter a value for x: ");
+            double xValue = scan.nextDouble();
+
+            System.out.println(linEquation.coordinateForX(xValue));
+        }
+
+
+
+
 
 
 
