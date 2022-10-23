@@ -42,7 +42,7 @@ public class LinearEquation {
     public double slope(){
         double changeInY = (double)(y2-y1);
         double changeInX = (double)(x2-x1);
-        return roundedToHundredth((double)changeInY/(double)changeInX);
+        return roundedToHundredth(changeInY/changeInX);
     }
 
 
@@ -78,21 +78,35 @@ public class LinearEquation {
 
         if (changeInX == -(changeInY)) {
             equation = "y = -x";
-        } else if (changeInX ==changeInY) {
+        } else if (changeInX == changeInY) {
             equation = "y = x";
-        } else if (changeInY%changeInX == 0) {
-            equation = "y = x" + changeInY/changeInX;
-        } else if (slope()==0.0) {
+        } else if (changeInY == 0.0){
             equation = "y = ";
+        }else if (changeInY%changeInX == 0) {
+            equation = "y =" + changeInY/changeInX + "x";
+        } //else if (slope()==0.0) {
+            //equation = "y = ";
+        /*}*/ else if (changeInY<0){
+            if (changeInX<0){
+                equation = "y = " + Math.abs(changeInY) + "/" + Math.abs(changeInX) + "x";
+            }
+        } else if (changeInX<0){
+            equation = "y= -" + changeInY + "/" + Math.abs(changeInX) + "x";
+
+        }else{
+            equation += "x";
         }
 
 
-        if (yIntercept()<0){
+        if (equation.indexOf("x") ==-1){
+            equation+= y2;
+        } else if(yIntercept()==0.0) {
+            equation+= "";
+        } else if(yIntercept()<0){
             equation+= " - " + Math.abs(yIntercept());
-        } else {
+        }else {
             equation+= " + " + yIntercept();
         }
-
         return equation;
     }
 
@@ -118,7 +132,8 @@ public class LinearEquation {
         HINT:  the Math.round method can help with this!
      */
     public double roundedToHundredth(double toRound){
-        return Math.round(toRound*100)/100;
+        double round = (Math.round(toRound*100.0))/100.0;
+        return round;
     }
 
 
