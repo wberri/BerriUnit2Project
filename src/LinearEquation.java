@@ -83,7 +83,7 @@ public class LinearEquation {
         } else if (changeInY == 0.0){
             equation = "y = ";
         }else if (changeInY%changeInX == 0) {
-            equation = "y =" + changeInY/changeInX + "x";
+            equation = "y = " + changeInY/changeInX + "x";
         } //else if (slope()==0.0) {
             //equation = "y = ";
         /*}*/ else if (changeInY<0){
@@ -119,7 +119,7 @@ public class LinearEquation {
     public String coordinateForX(double xValue) {
         double yValue = xValue * slope();
         yValue += yIntercept();
-        return "The point on the line is " + "(" + xValue + ", " + yValue + ")";
+        return "(" + xValue + ", " + yValue + ")";
     }
 
 
